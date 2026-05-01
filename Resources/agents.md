@@ -9,7 +9,7 @@ updated: 2026-04-28
 ## File Structure
 
 ```
-Personal Brain (private)/          ← Obsidian vault (แก้ไขได้จากที่นี่)
+Personal Brain/          ← Obsidian vault (แก้ไขได้จากที่นี่)
 ├── Me.md                          ← Profile (source of truth)
 ├── CLAUDE.md                      ← Wiki agent instructions
 └── Resources/
@@ -48,7 +48,7 @@ vault/Journal/
 └── current-state.md               ← อัปเดตโดย Journal Agent ทุกอาทิตย์
 ```
 
-**Profile (source of truth):** `Personal Brain (private)/Me.md`
+**Profile (source of truth):** `Personal Brain/Me.md`
 
 ---
 

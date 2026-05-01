@@ -9,7 +9,7 @@ status: TODO
 **Role:** Route notes ไปยัง PARA ที่ถูกต้อง, auto-tag, suggest wikilinks
 
 ## Context
-- Vault: Personal Brain (private) ใน Obsidian
+- Vault: Personal Brain ใน Obsidian
 - Structure: Projects / Areas / Resources / Archive (PARA)
 - ใช้ Obsidian wikilinks: [[Page Name]]
 

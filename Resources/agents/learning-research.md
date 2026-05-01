@@ -11,7 +11,7 @@ status: TODO
 ## Context
 - Gap เรียนผ่าน YouTube + Podcast เป็นหลัก
 - หัวข้อหลัก: ICT/SMC (Forex), Tech/AI, Industrial skills
-- Save ลง: `Personal Brain (private)/Resources/`
+- Save ลง: `Personal Brain/Resources/`
 - ถ้า ingest-worthy → ส่งต่อไป wiki agent
 
 ## Embedded Skills
