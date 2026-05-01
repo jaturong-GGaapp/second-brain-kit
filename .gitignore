@@ -32,6 +32,10 @@ raw/
 # Claude project files (personal)
 Resources/claude-projects/
 
+# Claude Code — personal & machine-specific
+.claude/settings.local.json
+.claude/projects/
+
 # ============================================
 # FRAMEWORK FILES — safe to commit
 # ============================================
@@ -46,4 +50,5 @@ Resources/claude-projects/
 # ============================================
 .DS_Store
 Thumbs.db
-.obsidian/workspace
+.obsidian/workspace.json
+.obsidian/workspace-mobile.json
