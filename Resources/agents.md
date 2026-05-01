@@ -156,6 +156,7 @@ Projects/*/state-*.md ← อัปเดต section ที่เกี่ยว
 | grill-with-docs | [[Resources/skills/shared/grill-with-docs/SKILL\|grill-with-docs]] | idea-validator, task-tracker, weekly-review |
 | obsidian-markdown | [[Resources/skills/shared/obsidian-markdown/SKILL\|obsidian-markdown]] | wiki-agent, note-organizer, journal-agent, weekly-review, learning-research, land-dev |
 | session-to-wiki | [[Resources/skills/shared/session-to-wiki\|session-to-wiki]] | journal-agent, learning-research |
+| deep-wiki-ingest | [[Resources/skills/shared/deep-wiki-ingest\|deep-wiki-ingest]] | wiki-agent *(full INGEST — concepts + entities + analysis)* |
 | find-skills | [[Resources/skills/shared/find-skills\|find-skills]] | skill-optimizer *(conditional)* |
 
 ---
@@ -167,7 +168,7 @@ Projects/*/state-*.md ← อัปเดต section ที่เกี่ยว
 | Master | 1 ✅ | — |
 | Meta layer | 1 ✅ (skill-optimizer) | — |
 | Worker prompts | 9 ✅ (skeleton) | เติมรายละเอียด |
-| Shared skills | 5 ✅ | — |
+| Shared skills | 6 ✅ | — |
 | Agent-specific skills | 8 ✅ (skeleton) | เติมรายละเอียด |
 | Memory | current-state.md ✅ | logs/ |
 | References | agents.md ✅ | secretary-techniques.md, communication-style.md |

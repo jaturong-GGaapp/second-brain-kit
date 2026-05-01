@@ -43,6 +43,26 @@ vault/
 
 ---
 
+## PARA Classification Rules
+
+When filing or advising on where something belongs:
+
+| Level | When to use | Duration / Complexity |
+|---|---|---|
+| **To-do** | Single action, no sub-steps | Done in < 1 week |
+| **Project** | Multiple steps, specific end state, actively worked on | Completable within ~6–12 months |
+| **Area** | Ongoing responsibility with no end date, OR too long to actively manage as a project | > 1–2 years or indefinite |
+
+**Decision shortcuts:**
+- If it takes 4+ years (e.g. debt snowball, Pipe Fitter apprenticeship) → **Area**, pull next milestone as a to-do
+- If it's a single payment, a single form, a single task → **to-do** inside the relevant Area or Project, not its own Project
+- If it's blocked indefinitely (e.g. "invest after debt-free") → stays a to-do or note in an Area, not a Project, until it becomes active
+
+> [!tip] Keep Projects/ lean
+> Projects/ should only contain things being actively worked on this month. A long list of Projects is a sign that most of them should be Areas or to-dos.
+
+---
+
 ## Session Start Protocol
 
 At the start of every new session — follow this order exactly:
@@ -173,7 +193,23 @@ Triggered by user ("health check", "lint") or suggested every 10 ingests.
 
 ---
 
-### 4. DAILY NOTE
+### 4. SKILL & AGENT REQUESTS
+
+Triggered when the user asks about creating, updating, reviewing, or optimizing skills or agents in the vault system.
+
+**Trigger keywords:** skill, agent, routing, สร้าง skill, อัปเดต skill, review skill, optimize agent, skill ซ้ำ, ปรับ agent, skill library, deep-wiki-ingest, session-to-wiki (when asking about the skill itself)
+
+**Workflow:**
+1. **Invoke `/secretary`** — do NOT handle skill management directly as wiki agent
+2. Secretary will route to skill-optimizer via its Step 3 routing table
+3. skill-optimizer handles: creating, reviewing, deduplicating, and optimizing skills
+
+> [!note] Why route through secretary
+> Skill management affects the whole agent system — not just the wiki layer. Secretary has the full picture of agents.md, routing policy, and skill-optimizer. Handling it as a wiki operation would bypass that context.
+
+---
+
+### 5. DAILY NOTE
 
 Triggered when user wants to write or review a daily journal entry.
 
@@ -203,13 +239,44 @@ What is this telling you about your life?
 
 ---
 
+## State File Schema
+
+State files live at `Areas/*/state-*.md` and `Projects/*/state-*.md`. They are the primary context read by Secretary when a domain-specific question is asked.
+
+**Core fields (required in every state file — in this order):**
+
+| Field | Purpose |
+|---|---|
+| `## Status` | One-liner: current phase + overall health |
+| `## Current Focus` | What's being actively worked on right now |
+| `## Next Actions` | Actionable to-dos |
+| `## Blockers` | What's stuck — or "-" if none |
+
+**Project state adds:**
+
+| Field | Purpose |
+|---|---|
+| `## Current Phase` | Phase name + done-when condition |
+| `## Done ✅` | Completed milestones |
+| `## Definition of Done` | What "complete" looks like — the end state |
+
+**Area state adds (optional):**
+
+| Field | Purpose |
+|---|---|
+| `## Metrics` | Key numbers for quantifiable areas (finance, health) |
+
+See `Areas/_example-area/state-_example-area.md` and `Projects/_example-project/state-_example-project.md` for clean templates.
+
+---
+
 ## File Format Conventions
 
 ### Frontmatter
 ```yaml
 ---
 title: "Page Title"
-type: entity | concept | source | analysis | overview | index | log
+type: entity | concept | source | analysis | overview | index | log | area-state | project-state
 tags: [tag1, tag2]
 created: YYYY-MM-DD
 updated: YYYY-MM-DD

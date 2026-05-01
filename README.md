@@ -55,6 +55,38 @@ wiki/               ← your knowledge base (grows as you ingest)
 
 ---
 
+## Getting content in
+
+Knowledge comes from many places. Pick the method that fits the source:
+
+**From the web — Obsidian Web Clipper**
+
+Install the [Obsidian Web Clipper](https://obsidian.md/clipper) Chrome extension. Set the default save location to `raw/`. Clip any article, post, or page — then ingest it.
+
+```
+"ingest raw/my-clipped-article.md"
+```
+
+**From a file — manual drop**
+
+Paste or save any content (notes, PDFs, exported chats, transcripts) directly into `raw/`, then ingest.
+
+```
+"ingest raw/expert-call-notes.md"
+```
+
+**From a conversation — session-to-wiki**
+
+After any session — with Claude, an expert, a friend, or a mentor — where useful ideas or decisions came up, run:
+
+```
+/session-to-wiki
+```
+
+The skill summarizes the session and writes a source page to `wiki/sources/` automatically. Use it after sessions with important decisions, new frameworks, or insights — not for routine tasks.
+
+---
+
 ## Customization
 
 Copy `Secretary.template.md` → `Secretary.md` and fill in your own domains, projects, and routing preferences.
