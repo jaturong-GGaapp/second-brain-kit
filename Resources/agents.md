@@ -110,7 +110,7 @@ Worker Agents   ────────────────┘
 | Worker | Own Skills | Shared Skills |
 |---|---|---|
 | [[Resources/agents/note-organizer\|note-organizer]] | link-suggester | para-router, obsidian-markdown |
-| [[Resources/agents/learning-research\|learning-research]] | web-researcher | para-router, obsidian-markdown |
+| [[Resources/agents/learning-research\|learning-research]] | web-researcher, analyzing-financial-statements *(pending-verify)* | para-router, obsidian-markdown |
 
 ### 📊 Review
 
@@ -158,6 +158,8 @@ Projects/*/state-*.md ← อัปเดต section ที่เกี่ยว
 | session-to-wiki | [[Resources/skills/shared/session-to-wiki\|session-to-wiki]] | journal-agent, learning-research |
 | deep-wiki-ingest | [[Resources/skills/shared/deep-wiki-ingest\|deep-wiki-ingest]] | wiki-agent *(full INGEST — concepts + entities + analysis)* |
 | find-skills | [[Resources/skills/shared/find-skills\|find-skills]] | skill-optimizer *(conditional)* |
+| webapp-testing *(pending-verify)* | [[Resources/skills/shared/webapp-testing/SKILL\|webapp-testing]] | idea-validator, second-brain-kit — เมื่อ App Startup มี web app (Phase 1) |
+| creating-financial-models *(pending-verify)* | [[Resources/skills/shared/creating-financial-models/SKILL\|creating-financial-models]] | idea-validator, land-dev — เมื่อต้องการ sensitivity analysis |
 
 ---
 
@@ -168,7 +170,7 @@ Projects/*/state-*.md ← อัปเดต section ที่เกี่ยว
 | Master | 1 ✅ | — |
 | Meta layer | 1 ✅ (skill-optimizer) | — |
 | Worker prompts | 9 ✅ (skeleton) | เติมรายละเอียด |
-| Shared skills | 6 ✅ | — |
+| Shared skills | 6 active + 2 pending-verify | webapp-testing, creating-financial-models |
 | Agent-specific skills | 8 ✅ (skeleton) | เติมรายละเอียด |
 | Memory | current-state.md ✅ | logs/ |
 | References | agents.md ✅ | secretary-techniques.md, communication-style.md |

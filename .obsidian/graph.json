@@ -8,31 +8,31 @@
   "collapse-color-groups": false,
   "colorGroups": [
     {
-      "query": "Agent",
+      "query": "Wiki",
       "color": {
         "a": 1,
-        "rgb": 10606381
+        "rgb": 14383330
       }
     },
     {
       "query": "App start up",
       "color": {
         "a": 1,
-        "rgb": 2663650
+        "rgb": 1621212
       }
     },
     {
       "query": "Me",
       "color": {
         "a": 1,
-        "rgb": 14701188
+        "rgb": 11657298
       }
     },
     {
       "query": "",
       "color": {
         "a": 1,
-        "rgb": 1205250
+        "rgb": 5431378
       }
     }
   ],
@@ -46,6 +46,6 @@
   "repelStrength": 9.30989583333333,
   "linkStrength": 0.790104166666667,
   "linkDistance": 138,
-  "scale": 0.7250265648088864,
+  "scale": 0.5919817112482453,
   "close": true
 }

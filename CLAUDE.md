@@ -266,6 +266,17 @@ State files live at `Areas/*/state-*.md` and `Projects/*/state-*.md`. They are t
 |---|---|
 | `## Metrics` | Key numbers for quantifiable areas (finance, health) |
 
+**Priority convention for `## Next Actions`:**
+
+| Tag | Meaning |
+|-----|---------|
+| `P0` | ทำสัปดาห์นี้ — blocking อย่างอื่น |
+| `P1` | ทำเดือนนี้ |
+| `P2` | ทำเมื่อมีเวลา |
+| `P3` | Parking Lot — จดไว้ ไม่ลืม รอคิว ไม่รู้สึกผิดที่ไม่ได้ทำ |
+
+`current-state.md` แสดงแค่ P0 ของแต่ละ area/project — P1–P3 อยู่ใน state file เต็ม
+
 See `Areas/_example-area/state-_example-area.md` and `Projects/_example-project/state-_example-project.md` for clean templates.
 
 ---

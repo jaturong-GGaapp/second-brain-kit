@@ -1,27 +1,32 @@
 ---
 title: "{{Area Name}}"
 type: area-state
+area: {{area-slug}}
 updated: YYYY-MM-DD
-note: updated by agent — do not edit manually
 ---
 
 # {{Area Name}} — State
 
 ## Status
-{{one-line current status}}
+[One-liner: phase + overall health]
 
-## Focus
-{{what you're actively working on in this area}}
+## Current Focus
+[What's being actively worked on right now — 1-2 lines]
 
-## Numbers / Metrics
-_(track whatever matters — balances, streaks, scores)_
-- ...
-
-## Open Loops
-1. ...
+## Metrics
+[Key numbers for this area — delete section if not applicable]
+- Metric A: value
+- Metric B: value
 
 ## Next Actions
-- [ ] ...
+- [ ] `P0` ทำสัปดาห์นี้ / blocking อย่างอื่น
+- [ ] `P1` ทำเดือนนี้
+- [ ] `P2` ทำเมื่อมีเวลา
+- [ ] `P3` Parking Lot — จดไว้ ไม่ลืม รอคิว
 
-## Notes
-_(decisions, constraints, context worth remembering)_
+## Blockers
+[What's stuck — or "-" if none]
+
+## Related Projects
+- [[Projects/.../state-...|Project Name]] — current phase
+_(ลบ section นี้ถ้าไม่มี project ที่เกี่ยวข้อง)_
