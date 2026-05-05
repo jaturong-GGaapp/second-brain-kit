@@ -1,5 +1,5 @@
 {
-  "collapse-filter": false,
+  "collapse-filter": true,
   "search": "",
   "showTags": false,
   "showAttachments": false,
@@ -8,31 +8,52 @@
   "collapse-color-groups": false,
   "colorGroups": [
     {
-      "query": "Wiki",
+      "query": "path:Resources  ",
       "color": {
         "a": 1,
         "rgb": 14383330
       }
     },
     {
-      "query": "App start up",
+      "query": "Projects  ",
       "color": {
         "a": 1,
         "rgb": 1621212
       }
     },
     {
-      "query": "Me",
+      "query": "path:wiki ",
       "color": {
         "a": 1,
         "rgb": 11657298
       }
     },
     {
-      "query": "",
+      "query": "path:raw  ",
       "color": {
         "a": 1,
-        "rgb": 5431378
+        "rgb": 6555798
+      }
+    },
+    {
+      "query": "path:Journal  ",
+      "color": {
+        "a": 1,
+        "rgb": 14236704
+      }
+    },
+    {
+      "query": "path:Areas  ",
+      "color": {
+        "a": 1,
+        "rgb": 147713
+      }
+    },
+    {
+      "query": "path:system  ",
+      "color": {
+        "a": 1,
+        "rgb": 723920
       }
     }
   ],
@@ -46,6 +67,6 @@
   "repelStrength": 9.30989583333333,
   "linkStrength": 0.790104166666667,
   "linkDistance": 138,
-  "scale": 0.5919817112482453,
+  "scale": 0.5935052970615853,
   "close": true
 }
