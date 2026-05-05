@@ -13,11 +13,13 @@ Journal/current-state.md
 
 # Areas — all personal (ignore contents, keep example template directory)
 Areas/*
+!Areas/README.md
 !Areas/_example-area
 Areas/_example-area/state-*.md
 
 # Projects — all personal (ignore contents, keep example template directory)
 Projects/*
+!Projects/README.md
 !Projects/_example-project
 Projects/_example-project/state-*.md
 
@@ -32,6 +34,10 @@ wiki/overview.md
 
 # Raw source documents (personal)
 raw/
+
+# Archive — personal (ignore contents, keep README)
+Archive/*
+!Archive/README.md
 
 # Claude.ai project files (personal — exported knowledge files)
 Resources/claude-ai/
