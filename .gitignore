@@ -36,6 +36,9 @@ Resources/claude-projects/
 .claude/settings.local.json
 .claude/projects/
 
+# Claude Code — skill inbox (draft ideas, not ready to commit)
+Resources/skills/inbox/
+
 # ============================================
 # FRAMEWORK FILES — safe to commit
 # ============================================
@@ -52,3 +55,4 @@ Resources/claude-projects/
 Thumbs.db
 .obsidian/workspace.json
 .obsidian/workspace-mobile.json
+.obsidian/graph.json
