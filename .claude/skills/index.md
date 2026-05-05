@@ -24,6 +24,9 @@ _Last updated: 2026-05-05_
 | [/deep-wiki-ingest](../commands/deep-wiki-ingest.md) | `/deep-wiki-ingest`, "deep ingest", "เก็บละเอียด" | — (standalone) |
 | [/weekly-review](../commands/weekly-review.md) | `/weekly-review` | — (standalone) |
 | [/skill-optimizer](../commands/skill-optimizer.md) | `/skill-optimizer` | `agents/skill-optimizer.md` |
+| [/sync-claude-project](../commands/sync-claude-project.md) | `/sync-claude-project`, "sync knowledge", "sync claude project" | — (standalone) |
+| [/new-claude-project](../commands/new-claude-project.md) | `/new-claude-project [name]`, "new claude project", "scaffold project" | — (standalone) |
+| [/archive-project](../commands/archive-project.md) | `/archive-project [name]`, "project เสร็จแล้ว", "archive project" | — (TODO: implement) |
 
 ---
 
@@ -57,7 +60,7 @@ _Last updated: 2026-05-05_
 | Skill | Used by |
 |-------|---------|
 | [shared/obsidian-markdown/](shared/obsidian-markdown/SKILL.md) | journal-agent, /session-to-wiki, /deep-wiki-ingest, /weekly-review |
-| [shared/para-router.md](shared/para-router.md) | secretary (domain routing reference) |
+| [shared/para-router.md](shared/para-router.md) | secretary (classify Project/Area/Todo/Resource + scaffold flow) |
 | [shared/roi-analyzer.md](shared/roi-analyzer.md) | general purpose — ROI calculations |
 | [shared/grill-with-docs/](shared/grill-with-docs/SKILL.md) | document analysis |
 | [shared/webapp-testing/](shared/webapp-testing/SKILL.md) | webapp QA |

@@ -44,11 +44,14 @@ Your agent is ready.
 ## How it works
 
 ```
-CLAUDE.md           ← always loaded (wiki agent + smart router)
-Secretary.md        ← your personal layer (routing, context)
-Me.md               ← your profile
-Journal/            ← daily notes, weekly reviews
-wiki/               ← your knowledge base (grows as you ingest)
+CLAUDE.md                    ← always loaded (wiki agent + smart router)
+Secretary.md                 ← your personal layer (routing, context)
+Me.md                        ← your profile
+Projects/                    ← active projects (end state + deadline)
+Areas/                       ← ongoing responsibilities (no end date)
+Journal/                     ← daily notes, weekly reviews
+wiki/                        ← your knowledge base (grows as you ingest)
+Resources/claude-ai/         ← Claude.ai mobile workspaces (one per project)
 ```
 
 **Your data never leaves your machine.** Everything is plain Markdown.
@@ -84,6 +87,28 @@ After any session — with Claude, an expert, a friend, or a mentor — where us
 ```
 
 The skill summarizes the session and writes a source page to `wiki/sources/` automatically. Use it after sessions with important decisions, new frameworks, or insights — not for routine tasks.
+
+---
+
+## Commands
+
+| Command | When to use |
+|---|---|
+| `/journal` | Daily FWIM interview → saves entry to `Journal/Daily/` |
+| `/weekly-review` | End of week — synthesizes journal, updates all state files |
+| `/session-to-wiki` | After a useful conversation — saves insights to wiki |
+| `/deep-wiki-ingest` | Ingest a raw source file with full detail |
+| `/new-claude-project [name]` | Scaffold a new project (state file + Claude.ai workspace) |
+| `/sync-claude-project` | Sync `Resources/claude-ai/` knowledge files with current vault state |
+| `/skill-optimizer` | Review and improve the agent skill library |
+
+---
+
+## Claude.ai on mobile
+
+Each project can have a matching workspace in `Resources/claude-ai/[project-name]/` — a folder of knowledge files you upload to a Claude.ai project for mobile use.
+
+Run `/sync-claude-project` to keep all workspaces up to date after state changes. Run `/new-claude-project [name]` to scaffold a workspace for a new project.
 
 ---
 

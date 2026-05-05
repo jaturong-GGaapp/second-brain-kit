@@ -1,9 +1,0 @@
-# OS
-.DS_Store
-Thumbs.db
-
-# Local config (never commit)
-*.local.md
-config/
-.env
-.env.*

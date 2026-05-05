@@ -19,7 +19,7 @@ updated: 2026-04-29
 **สิ่งที่ต้อง map ในทุก survey:**
 - Active skills (`~/.claude/skills/`) — ชื่อ, trigger, หน้าที่หลัก
 - Spec skills (`Resources/skills/`) — ยังไม่ implement หรือ deprecated
-- Agent specs (`Resources/agents/`) — role, department, sub-skills ที่อ้างถึง
+- Agent specs (`Resources/agent-system-index.md`) — role, department, sub-skills ที่อ้างถึง
 - Secretary routing (CLAUDE.md) — domain → state file mapping
 - Memory (`~/.claude/projects/.../memory/`) — ข้อมูลที่ persist ข้าม session
 

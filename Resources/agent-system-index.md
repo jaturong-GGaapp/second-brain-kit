@@ -13,7 +13,7 @@ Personal Brain/
 ├── Me.md                          ← Profile (source of truth)
 ├── CLAUDE.md                      ← Wiki agent instructions
 ├── Resources/
-│   └── agents.md                  ← ไฟล์นี้ (index)
+│   └── agent-system-index.md      ← ไฟล์นี้ (index)
 └── .claude/                       ← Single source of truth (Anthropic official)
     ├── agents/                    ← agent prompt files
     │   ├── secretary.md
