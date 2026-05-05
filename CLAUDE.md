@@ -15,7 +15,7 @@ When a new source arrives, you don't just index it — you read it, extract what
 
 You are the **wiki agent** for this vault — build and maintain the knowledge wiki (`wiki/` layer): ingest, query, lint.
 
-Personal context, journal, and routing are handled by `Secretary.md` and the skill layer. `CLAUDE.md` is wiki-only.
+Wiki operations live in `.claude/agents/wiki-agent.md`. Personal context, routing, and journal are handled by `.claude/agents/secretary.md` and the `.claude/` skill layer.
 
 ---
 
@@ -24,8 +24,14 @@ Personal context, journal, and routing are handled by `Secretary.md` and the ski
 ```
 vault/
 ├── CLAUDE.md                  ← This file. Universal schema. Read every session.
-├── Secretary.md               ← Optional personal layer. Read if present.
-├── Me.md                      ← Full user profile. Secretary handles loading.
+├── Secretary.md               ← Personal layer pointer → .claude/agents/secretary.md
+├── Me.md                      ← Full user profile.
+│
+├── .claude/                   ← Agent & skill layer. Single source of truth.
+│   ├── agents/                ← secretary, journal-agent, wiki-agent, skill-optimizer
+│   ├── commands/              ← /journal, /session-to-wiki, /deep-wiki-ingest, /weekly-review, /skill-optimizer
+│   ├── skills/                ← lenses + shared utilities (index.md = catalog)
+│   └── hooks/
 │
 ├── Projects/                  ← Active project workspaces
 ├── Areas/                     ← Ongoing life areas (no end date)
@@ -77,136 +83,20 @@ When filing or advising on where something belongs:
 At the start of every new session — follow this order exactly:
 1. Read `CLAUDE.md` (this file)
 2. **Try to read `Secretary.md`**
-   - **Found** → read it now; Secretary.md will instruct what else to load
-   - **Not found** → proceed as generic wiki agent (no personal context) + notify user: "Secretary.md not found — running in wiki-only mode. Create Secretary.md from [[Secretary.template]] to enable personal context."
+   - **Found** → read it; it will point to `.claude/agents/secretary.md` for full instructions
+   - **Not found** → proceed as generic wiki agent (no personal context) + notify user: "Secretary.md not found — running in wiki-only mode."
 3. Read `wiki/index.md`
 4. Read last 30 lines of `wiki/log.md`
 5. Greet the user
 
-> [!note] Why always read Secretary.md
-> CLAUDE.md has no personal context — it cannot detect whether a query is "personal"
-> before reading Secretary.md. Always loading it is the only reliable approach.
-> Secretary.md is small (~50 lines); token cost is negligible.
-
----
-
-## Operations
-
-### 1. INGEST
-
-Triggered when the user drops a file into `raw/` or pastes content and says "ingest."
-
-**Workflow:**
-1. **Read** the source fully (if >2000 words, scan structure first)
-2. **Write** source summary page at `wiki/sources/<source-slug>.md`
-3. **Update** existing entity and concept pages touched by this source
-4. **Create** new entity/concept pages for important items lacking pages
-5. **Update** `wiki/index.md`
-6. **Revise** `wiki/overview.md` if the source meaningfully shifts the synthesis
-7. **Append** to `wiki/log.md`
-
-**Source slug:** `YYYY-MM-DD-short-kebab-title`
-
-**Source summary template:**
-```markdown
----
-title: "Source Title"
-type: source
-tags: []
-created: YYYY-MM-DD
-updated: YYYY-MM-DD
-sources: [self]
----
-
-# Source Title
-
-| Field | Value |
-|-------|-------|
-| **Author** | ... |
-| **Date** | ... |
-| **Format** | article \| paper \| book \| podcast \| video \| note |
-| **Link/File** | ... |
-
-## Summary
-3–5 sentences.
-
-## Key Takeaways
-- ...
-
-## Notable Quotes
-> "..."
-
-## Connections
-- **Supports:** [[concepts/X]], [[entities/Y]]
-- **Contradicts:** [[concepts/Z]]
-- **See also:** [[sources/slug]]
-
-## Notes
-```
-
----
-
-### 2. QUERY
-
-Triggered when the user asks a question or requests analysis.
-
-**Workflow:**
-1. Read `wiki/index.md` to identify relevant pages
-2. Read those pages
-3. Synthesize answer in chat, citing wiki pages: `[[Page Name]]`
-4. Ask: "Save this as a wiki page?" → if yes, save to `wiki/analyses/<YYYY-MM-DD-slug>.md`
-5. Append to `wiki/log.md`
-
-**Analysis template:**
-```markdown
----
-title: "Analysis Title"
-type: analysis
-tags: []
-created: YYYY-MM-DD
-updated: YYYY-MM-DD
-sources: [slug1, slug2]
----
-
-# Analysis Title
-
-**Question:** ...
-**Date:** YYYY-MM-DD
-
-## Answer
-...
-
-## Sources Consulted
-- [[sources/X]]
-
-## Follow-up Questions
-- ...
-```
-
----
-
-### 3. LINT
-
-Triggered by user ("health check", "lint") or suggested every 10 ingests.
-
-**Check for:**
-- Contradictions between pages
-- Stale claims superseded by newer sources
-- Orphan pages (no inbound links)
-- Concepts mentioned across pages but missing their own page
-- Missing cross-references
-- Data gaps worth filling
-- New questions or sources worth investigating
-
-**Output:** Report at `wiki/analyses/YYYY-MM-DD-lint.md`, summary in chat.
-
----
+> [!note] Wiki operations
+> INGEST / QUERY / LINT workflows and all templates live in `.claude/agents/wiki-agent.md`
 
 ---
 
 ## State File Schema
 
-State files live at `Areas/*/state-*.md` and `Projects/*/state-*.md`. They are the primary context read by Secretary when a domain-specific question is asked.
+State files live at `Areas/*/state-*.md` and `Projects/*/state-*.md`.
 
 **Core fields (required in every state file — in this order):**
 
@@ -241,8 +131,6 @@ State files live at `Areas/*/state-*.md` and `Projects/*/state-*.md`. They are t
 | `P3` | Parking lot — captured, not forgotten, no guilt if not done yet |
 
 `current-state.md` shows only P0 items per area/project — P1–P3 live in the full state file.
-
-See `Areas/_example-area/state-_example-area.md` and `Projects/_example-project/state-_example-project.md` for clean templates.
 
 ---
 
@@ -320,27 +208,6 @@ Append-only. Format: `## [YYYY-MM-DD] operation | title`
 
 ---
 
-## Cross-Reference Rules
-
-- Every entity/concept mentioned in a source page → wikilinked on first mention
-- Entity pages → `## Mentioned In` section linking to all sources
-- Concept pages → note which entities exemplify the concept
-- Contradictions → `> [!warning] Contradiction` callout with both sources cited
-
----
-
-## Page Size Guidelines
-
-| Type | Target |
-|------|--------|
-| Source summary | 200–500 words |
-| Entity page | 100–400 words |
-| Concept page | 200–600 words |
-| Analysis | As long as needed |
-| Overview | 500–1000 words |
-
----
-
 ## Hard Rules
 
 1. **Never modify `raw/`** — immutable source of truth
@@ -349,5 +216,5 @@ Append-only. Format: `## [YYYY-MM-DD] operation | title`
 4. **Discuss before ingesting** — ask briefly if there's any framing or emphasis to note first
 5. **File good answers** — worthwhile analyses belong in the wiki, not just chat
 6. **Use callouts** for warnings, tips, contradictions
-7. **Session start: read CLAUDE.md → Secretary.md (if present) → wiki/index.md → last 30 lines wiki/log.md**
+7. **Session start: CLAUDE.md → Secretary.md → wiki/index.md → last 30 lines wiki/log.md**
 8. **Language and tone follow Secretary.md** — if no Secretary.md, default to English, concise

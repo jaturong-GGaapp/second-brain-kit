@@ -13,9 +13,17 @@ type: index
 
 | ไฟล์ | หน้าที่ |
 |------|--------|
-| [[CLAUDE.md]] | Universal schema — agent อ่านทุก session |
-| [[Secretary.md]] | Personal layer — context, routing, โปรไฟล์ส่วนตัว |
+| [[CLAUDE.md]] | Universal schema — wiki rules, state schema, session protocol |
+| [[Secretary.md]] | Personal layer pointer → `.claude/agents/secretary.md` |
 | [[Me.md]] | User profile เต็ม |
+
+### .claude/ — Skill Layer
+
+| โฟลเดอร์ | สิ่งที่อยู่ข้างใน |
+|---------|----------------|
+| `.claude/agents/` | secretary, journal-agent, wiki-agent, skill-optimizer |
+| `.claude/commands/` | /journal, /session-to-wiki, /deep-wiki-ingest, /weekly-review, /skill-optimizer |
+| `.claude/skills/` | lenses + shared utilities — ดู [skills/index.md](.claude/skills/index.md) |
 
 ---
 
