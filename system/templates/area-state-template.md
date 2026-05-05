@@ -27,6 +27,8 @@ updated: YYYY-MM-DD
 ## Blockers
 [What's stuck — or "-" if none]
 
+_ดูตัวอย่าง: [[system/examples/example_area_state]]_
+
 ## Related Projects
 - [[Projects/.../state-...|Project Name]] — current phase
 _(ลบ section นี้ถ้าไม่มี project ที่เกี่ยวข้อง)_

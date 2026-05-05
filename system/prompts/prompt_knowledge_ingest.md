@@ -63,6 +63,10 @@ sources: [self]
 ## Notable Quotes
 > "..."
 
+## Detail Log
+<!-- verbatim: steps, numbers, decisions + reasoning, code snippets -->
+<!-- อย่าสรุป — เก็บ raw ถ้าสงสัยว่าจะใช้ภายหลัง -->
+
 ## Connections
 - **Supports:** [[concepts/X]]
 - **Contradicts:** [[concepts/Z]]

@@ -25,7 +25,28 @@ Meaning ที่ดีอ่านแล้วยังสะกิดได้
 **Reflect อยู่ใน note หรือเปล่า?**
 ปัจจุบัน Reflect แสดงใน chat แต่ไม่บันทึกลง note โดยตรง — ถ้า Reflect มี insight ที่แม่น ให้เพิ่มเป็น `### 💡 Session Insight` ในไฟล์ด้วย ไม่ใช่แค่พูดแล้วหาย
 
+## ขั้นตอนหลังบันทึกไฟล์
+
+หลังสร้าง `Journal/Daily/YYYY-MM-DD.md` แล้ว — ต้อง append entry ใหม่ลง `Journal/Daily/index.md` ด้วยเสมอ:
+
+```markdown
+- [[YYYY-MM-DD]]
+```
+
+ถ้า `index.md` ยังไม่มี → สร้างใหม่ด้วย template:
+```markdown
+---
+title: Daily Journal Index
+type: index
+---
+
+# Daily Journal
+
+- [[YYYY-MM-DD]]
+```
+
 ## สิ่งที่ไม่ควรทำ
 - ❌ Copy คำตอบแบบ verbatim โดยไม่ clean ภาษา
 - ❌ ใส่ทุก section แม้ว่าจะ skip — ถ้าไม่มี Finance ก็ไม่ต้องมี header Finance
 - ❌ เพิ่ม interpretation ที่ Gap ไม่ได้พูด เข้าไปใน Fact section
+- ❌ บันทึก daily note โดยไม่อัปเดต index.md

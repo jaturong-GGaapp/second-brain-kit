@@ -95,6 +95,22 @@ Copy `Me.template.md` → `Me.md` and fill in your profile. The agents use this 
 
 ---
 
+## Tips & tricks
+
+**Obsidian Web Clipper** — a browser extension that converts web articles to Markdown. Very useful for quickly getting sources into your `raw/` collection.
+
+**Download images locally** — In Obsidian Settings → Files and links, set "Attachment folder path" to `raw/assets/`. Then in Settings → Hotkeys, search for "Download" and bind "Download attachments for current file" to a hotkey (e.g. `Ctrl+Shift+D`). After clipping an article, hit the hotkey and all images are saved locally. Note: LLMs can't read inline images in one pass — the workaround is to have the agent read the text first, then view referenced images separately for additional context.
+
+**Graph view** — Obsidian's graph view is the best way to see the shape of your wiki: what's connected, which pages are hubs, which are orphans.
+
+**Marp** — a Markdown-based slide deck format. Obsidian has a plugin for it. Useful for generating presentations directly from wiki content.
+
+**Dataview** — an Obsidian plugin that runs queries over page frontmatter. If your agent adds YAML frontmatter to wiki pages (tags, dates, source counts), Dataview can generate dynamic tables and lists.
+
+**Version control** — the wiki is just a git repo of Markdown files. You get version history, branching, and collaboration for free.
+
+---
+
 ## License
 
 MIT — free to use, fork, and build on.

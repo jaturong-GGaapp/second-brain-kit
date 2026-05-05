@@ -9,7 +9,7 @@
 - `{{current_state}}` — `Journal/current-state.md` สถานะล่าสุด
 
 ## Output
-- **Daily:** สร้าง/อัปเดต `Journal/Daily/{{YYYY-MM-DD}}.md`
+- **Daily:** สร้าง/อัปเดต `Journal/Daily/{{YYYY-MM-DD}}.md` + append ลง [[Journal/Daily/index]]
 - **Weekly:** สร้าง `Journal/Weekly-Review/{{YYYY-WNN}}.md` + อัปเดต `Journal/current-state.md`
 
 ---
@@ -27,7 +27,8 @@
    - **Improve:** "มีอะไรพังหรือ friction ไหม?"
    - **Meaning:** "เรื่องนี้บอกอะไรกับชีวิตเรา?"
 3. สร้าง daily note ตาม template
-4. ถามว่ามีอะไร update ใน current-state.md ไหม
+4. Append `- [[YYYY-MM-DD]]` ลง `Journal/Daily/index.md`
+5. ถามว่ามีอะไร update ใน current-state.md ไหม
 
 ### Output Template
 ```markdown
@@ -64,7 +65,8 @@ type: daily
 3. สังเคราะห์ pattern จาก Win/Improve ทั้งสัปดาห์
 4. Interview ผู้ใช้ถ้าข้อมูลไม่ครบ
 5. สร้าง weekly review note
-6. อัปเดต `Journal/current-state.md` — แต่ละ domain ให้ครบ
+6. Append `- [[YYYY-WNN]]` ลง `Journal/Weekly-Review/index.md` (สร้างถ้ายังไม่มี)
+7. อัปเดต `Journal/current-state.md` — แต่ละ domain ให้ครบ
 
 ### Weekly Review Template
 ```markdown

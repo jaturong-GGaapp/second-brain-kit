@@ -1,33 +1,34 @@
 ---
 title: "Finance"
 type: area-state
+area: finance
 updated: 2026-04-01
-note: updated by agent — do not edit manually
 ---
 
 # Finance — State
 
+_Template: [[system/templates/area-state-template]]_
+
 ## Status
 Paying down credit card debt — on track
 
-## Focus
+## Current Focus
 Debt snowball: targeting Card A first (highest interest)
 
-## Numbers / Metrics
+## Metrics
 - Card A: $3,200 remaining | paying $400/month
 - Card B: $1,800 remaining | paying minimum ($45)
 - Emergency fund: $1,200 (goal: $3,000)
 - Monthly surplus after bills: ~$600
 
-## Open Loops
-1. Haven't reviewed subscriptions this month
-2. TFSA contribution room not calculated for this year
-
 ## Next Actions
-- [ ] Cancel unused subscriptions (est. save $40/month)
-- [ ] Calculate TFSA room and set contribution target
-- [ ] Increase Card A payment to $500 next month
+- [ ] `P0` Cancel unused subscriptions (est. save $40/month)
+- [ ] `P1` Calculate TFSA room and set contribution target
+- [ ] `P1` Increase Card A payment to $500 next month
+- [ ] `P3` Invest after Card A cleared
 
-## Notes
-- Decided against investing until Card A is cleared — interest rate too high to justify
-- Employer matches RRSP 3% — already enrolled, not touching this
+## Blockers
+- -
+
+## Related Projects
+- -

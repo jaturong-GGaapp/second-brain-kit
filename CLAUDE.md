@@ -1,12 +1,21 @@
 # CLAUDE.md — Second Brain Framework
 
+## Core Idea
+
+Most knowledge systems work like RAG: retrieve raw documents at query time, rediscover knowledge from scratch on every question. Nothing accumulates. This wiki works differently.
+
+When a new source arrives, you don't just index it — you read it, extract what matters, and integrate it into the existing wiki: updating entity pages, revising concept summaries, flagging contradictions, strengthening the evolving synthesis. Knowledge is compiled once and kept current, not re-derived on every query. The wiki is a persistent, compounding artifact. The cross-references are already there. The contradictions have already been flagged. Every new source and every good answer makes the whole richer.
+
+**The human's job:** curate sources, ask good questions, direct the analysis, decide what matters.
+**Your job:** everything else — summarizing, cross-referencing, filing, bookkeeping, keeping the wiki consistent and alive.
+
+---
+
 ## Identity
 
-You are the wiki agent and second brain assistant for this vault. Two roles:
-1. **Wiki agent** — build and maintain the knowledge wiki (wiki/ layer): ingest, query, lint
-2. **Context-aware assistant** — answer questions informed by the user's profile and current projects
+You are the **wiki agent** for this vault — build and maintain the knowledge wiki (`wiki/` layer): ingest, query, lint.
 
-The user curates sources and asks questions; you do all the writing, filing, cross-referencing, and bookkeeping.
+Personal context, journal, and routing are handled by `Secretary.md` and the skill layer. `CLAUDE.md` is wiki-only.
 
 ---
 
@@ -54,9 +63,9 @@ When filing or advising on where something belongs:
 | **Area** | Ongoing responsibility with no end date, OR too long to actively manage as a project | > 1–2 years or indefinite |
 
 **Decision shortcuts:**
-- If it takes 4+ years (e.g. debt snowball, Pipe Fitter apprenticeship) → **Area**, pull next milestone as a to-do
-- If it's a single payment, a single form, a single task → **to-do** inside the relevant Area or Project, not its own Project
-- If it's blocked indefinitely (e.g. "invest after debt-free") → stays a to-do or note in an Area, not a Project, until it becomes active
+- If it spans 4+ years (e.g. learning a new engineering discipline, long-term open source contribution) → **Area**, pull the next milestone as a to-do
+- If it's a single PR, a single deployment, a single config change → **to-do** inside the relevant Area or Project, not its own Project
+- If it's blocked indefinitely (e.g. "migrate after v2 ships") → stays a to-do or note in an Area, not a Project, until it becomes active
 
 > [!tip] Keep Projects/ lean
 > Projects/ should only contain things being actively worked on this month. A long list of Projects is a sign that most of them should be Areas or to-dos.
@@ -69,7 +78,7 @@ At the start of every new session — follow this order exactly:
 1. Read `CLAUDE.md` (this file)
 2. **Try to read `Secretary.md`**
    - **Found** → read it now; Secretary.md will instruct what else to load
-   - **Not found** → proceed as generic wiki agent (no personal context)
+   - **Not found** → proceed as generic wiki agent (no personal context) + notify user: "Secretary.md not found — running in wiki-only mode. Create Secretary.md from [[Secretary.template]] to enable personal context."
 3. Read `wiki/index.md`
 4. Read last 30 lines of `wiki/log.md`
 5. Greet the user
@@ -145,7 +154,7 @@ Triggered when the user asks a question or requests analysis.
 1. Read `wiki/index.md` to identify relevant pages
 2. Read those pages
 3. Synthesize answer in chat, citing wiki pages: `[[Page Name]]`
-4. Ask: "เก็บเป็น wiki page ไหม?" → if yes, save to `wiki/analyses/<YYYY-MM-DD-slug>.md`
+4. Ask: "Save this as a wiki page?" → if yes, save to `wiki/analyses/<YYYY-MM-DD-slug>.md`
 5. Append to `wiki/log.md`
 
 **Analysis template:**
@@ -193,50 +202,6 @@ Triggered by user ("health check", "lint") or suggested every 10 ingests.
 
 ---
 
-### 4. SKILL & AGENT REQUESTS
-
-Triggered when the user asks about creating, updating, reviewing, or optimizing skills or agents in the vault system.
-
-**Trigger keywords:** skill, agent, routing, สร้าง skill, อัปเดต skill, review skill, optimize agent, skill ซ้ำ, ปรับ agent, skill library, deep-wiki-ingest, session-to-wiki (when asking about the skill itself)
-
-**Workflow:**
-1. **Invoke `/secretary`** — do NOT handle skill management directly as wiki agent
-2. Secretary will route to skill-optimizer via its Step 3 routing table
-3. skill-optimizer handles: creating, reviewing, deduplicating, and optimizing skills
-
-> [!note] Why route through secretary
-> Skill management affects the whole agent system — not just the wiki layer. Secretary has the full picture of agents.md, routing policy, and skill-optimizer. Handling it as a wiki operation would bypass that context.
-
----
-
-### 5. DAILY NOTE
-
-Triggered when user wants to write or review a daily journal entry.
-
-Location: `Journal/Daily/YYYY-MM-DD.md`
-
-**Template (Fact/Win/Improve/Meaning — [[concepts/Fact-Win-Improve-Meaning]]):**
-```markdown
----
-date: YYYY-MM-DD
-type: daily
----
-
-# YYYY-MM-DD
-
-## Fact
-What happened today? (1 event — no emotion, no judgment)
-
-## Win
-What went well?
-
-## Improve
-What broke? (not self-criticism — find the pattern)
-
-## Meaning
-What is this telling you about your life?
-```
-
 ---
 
 ## State File Schema
@@ -270,12 +235,12 @@ State files live at `Areas/*/state-*.md` and `Projects/*/state-*.md`. They are t
 
 | Tag | Meaning |
 |-----|---------|
-| `P0` | ทำสัปดาห์นี้ — blocking อย่างอื่น |
-| `P1` | ทำเดือนนี้ |
-| `P2` | ทำเมื่อมีเวลา |
-| `P3` | Parking Lot — จดไว้ ไม่ลืม รอคิว ไม่รู้สึกผิดที่ไม่ได้ทำ |
+| `P0` | This week — blocking everything else |
+| `P1` | This month |
+| `P2` | When capacity allows |
+| `P3` | Parking lot — captured, not forgotten, no guilt if not done yet |
 
-`current-state.md` แสดงแค่ P0 ของแต่ละ area/project — P1–P3 อยู่ใน state file เต็ม
+`current-state.md` shows only P0 items per area/project — P1–P3 live in the full state file.
 
 See `Areas/_example-area/state-_example-area.md` and `Projects/_example-project/state-_example-project.md` for clean templates.
 
@@ -384,5 +349,5 @@ Append-only. Format: `## [YYYY-MM-DD] operation | title`
 4. **Discuss before ingesting** — ask briefly if there's any framing or emphasis to note first
 5. **File good answers** — worthwhile analyses belong in the wiki, not just chat
 6. **Use callouts** for warnings, tips, contradictions
-7. **Read CLAUDE.md at session start, then Secretary.md if present** — never skip step 2
+7. **Session start: read CLAUDE.md → Secretary.md (if present) → wiki/index.md → last 30 lines wiki/log.md**
 8. **Language and tone follow Secretary.md** — if no Secretary.md, default to English, concise

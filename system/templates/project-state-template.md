@@ -28,5 +28,7 @@ updated: YYYY-MM-DD
 ## Blockers
 [What's stuck — or "-" if none]
 
+_ดูตัวอย่าง: [[system/examples/example_project_state]]_
+
 ## Definition of Done
 [What "complete" looks like — the end state that closes this project]
