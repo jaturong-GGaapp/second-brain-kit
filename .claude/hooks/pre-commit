@@ -1,0 +1,4 @@
+#!/bin/sh
+# Untrack any files that are in .gitignore but still cached in git index
+
+git ls-files -z --ignored --exclude-standard --cached | xargs -0 -r git rm --cached --quiet
