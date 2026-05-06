@@ -12,6 +12,7 @@ _Last updated: 2026-05-05_
 | [journal-agent.md](../agents/journal-agent.md) | Daily FWIM interview + patch current-state.md | `skills/journal-agent/` (3 lenses) |
 | [wiki-agent.md](../agents/wiki-agent.md) | INGEST / QUERY / LINT บน wiki/ layer | — |
 | [skill-optimizer.md](../agents/skill-optimizer.md) | Systems architect สำหรับ .claude/ — survey, diagnose, recommend | `skills/skill-optimizer/` (3 lenses) |
+| [business-plan-analyst.md](../agents/business-plan-analyst.md) | วิเคราะห์แผนธุรกิจผ่าน multi-lens framework (Market, Model, Moat, Money, Milestones) | — |
 
 ---
 

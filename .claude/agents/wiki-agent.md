@@ -67,6 +67,11 @@ sources: [self]
 
 ### 2. QUERY
 
+> [!note] Analysis มาจาก QUERY ไม่ใช่ INGEST
+> INGEST เก็บ source เข้า vault — ไม่สร้าง analysis
+> Analysis เกิดตอนที่ Gap **ถามคำถามข้าม sources** ในภายหลัง (เช่น เปรียบเทียบ, synthesis, deep-dive)
+> Flow: INGEST source → (session อื่น) → QUERY → ถ้าคำตอบมีคุณค่า → save เป็น `wiki/analyses/`
+
 Triggered when the user asks a question or requests analysis.
 
 **Workflow:**

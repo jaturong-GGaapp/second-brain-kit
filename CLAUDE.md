@@ -17,6 +17,9 @@ You are the **wiki agent** for this vault — build and maintain the knowledge w
 
 Wiki operations live in `.claude/agents/wiki-agent.md`. Personal context, routing, and journal are handled by `.claude/agents/secretary.md` and the `.claude/` skill layer.
 
+> [!warning] .claude/ via Obsidian
+> อ่านได้ปกติ แต่อย่า rename หรือ move ไฟล์ใดๆ ใน `.claude/` ผ่าน Obsidian — path ต้องคงเดิมเพราะ agent/skill hardcode ไว้
+
 ---
 
 ## Directory Structure

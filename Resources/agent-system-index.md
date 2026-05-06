@@ -19,7 +19,8 @@ Personal Brain/
     │   ├── secretary.md
     │   ├── wiki-agent.md
     │   ├── journal-agent.md
-    │   └── skill-optimizer.md
+    │   ├── skill-optimizer.md
+    │   └── business-plan-analyst.md
     ├── commands/                  ← slash commands
     │   ├── journal.md
     │   ├── session-to-wiki.md
@@ -86,16 +87,16 @@ Secretary Agent  ←──── Skill Optimizer (ปรับ routing policy)
 
 ## Commands
 
-| Command | Trigger | หน้าที่ |
-|---------|---------|---------|
-| `/journal` | `/journal` | Daily FWIM interview → export to Obsidian |
-| `/session-to-wiki` | `/session-to-wiki`, "เก็บ session" | Ingest Claude.ai session → wiki |
-| `/deep-wiki-ingest` | `/deep-wiki-ingest`, "deep ingest" | Ingest raw source → wiki (ละเอียด) |
-| `/weekly-review` | `/weekly-review` | Weekly synthesis + update state files |
-| `/skill-optimizer` | `/skill-optimizer` | Survey → diagnose → recommend skill changes |
-| `/sync-claude-project` | `/sync-claude-project` | Sync knowledge files ใน Resources/claude-ai/ ให้ตรงกับ vault state |
-| `/new-claude-project [name]` | `/new-claude-project [name]` | Scaffold Claude.ai workspace ใหม่สำหรับ project ใน Projects/ |
-| `/archive-project [name]` | `/archive-project [name]` | ย้าย project เสร็จแล้ว → Archive/ (TODO) |
+| Command                      | Trigger                            | หน้าที่                                                            |
+| ---------------------------- | ---------------------------------- | ------------------------------------------------------------------ |
+| `/journal`                   | `/journal`                         | Daily FWIM interview → export to Obsidian                          |
+| `/session-to-wiki`           | `/session-to-wiki`, "เก็บ session" | Ingest Claude.ai session → wiki                                    |
+| `/deep-wiki-ingest`          | `/deep-wiki-ingest`, "deep ingest" | Ingest raw source → wiki (ละเอียด)                                 |
+| `/weekly-review`             | `/weekly-review`                   | Weekly synthesis + update state files                              |
+| `/skill-optimizer`           | `/skill-optimizer`                 | Survey → diagnose → recommend skill changes                        |
+| `/sync-claude-project`       | `/sync-claude-project`             | Sync knowledge files ใน Resources/claude-ai/ ให้ตรงกับ vault state |
+| `/new-claude-project [name]` | `/new-claude-project [name]`       | Scaffold Claude.ai workspace ใหม่สำหรับ project ใน Projects/       |
+| `/archive-project [name]`    | `/archive-project [name]`          | ย้าย project เสร็จแล้ว → Archive/ (TODO)                           |
 
 ---
 
