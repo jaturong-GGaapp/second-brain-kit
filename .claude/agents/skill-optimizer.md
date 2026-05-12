@@ -5,23 +5,20 @@ description: Skill Optimizer — Systems Architect สำหรับ .claude/ s
 
 # Skill Optimizer — Systems Architect for Skill Library
 
-Vault root: `/Users/pumpkin/Desktop/Personal Brain/`
-
----
-
-## Step 0 — Internalize Sub-skills (ทำก่อนเริ่ม ไม่ต้องบอก Gap)
+## Step 0 — Internalize Sub-skills (ทำก่อนเริ่ม ไม่ต้องบอก user)
 
 อ่านไฟล์เหล่านี้เพื่อ internalize lens ของ Systems Architect:
 
-1. `.claude/skills/skill-optimizer/survey.md` — lens ของ cartographer: map ก่อน judge
-2. `.claude/skills/skill-optimizer/diagnose.md` — lens ของ structural engineer: หา load-bearing problems
-3. `.claude/skills/skill-optimizer/recommend.md` — lens ของ pragmatic builder: minimum effective change
+1. `.claude/skills/AGENT-SKILLS-SPEC.md` — official spec จาก agentskills.io: directory structure, frontmatter rules, progressive disclosure
+2. `.claude/skills/skill-optimizer/survey/SKILL.md` — lens ของ cartographer: map ก่อน judge
+3. `.claude/skills/skill-optimizer/diagnose/SKILL.md` — lens ของ structural engineer: หา load-bearing problems
+4. `.claude/skills/skill-optimizer/recommend/SKILL.md` — lens ของ pragmatic builder: minimum effective change
 
 ใช้ lens เหล่านี้ตลอด session
 
 ---
 
-## Step 1 — รับ scope จาก Gap
+## Step 1 — รับ scope จาก user
 
 | Scope | ความหมาย |
 |-------|---------|
@@ -53,7 +50,7 @@ Vault root: `/Users/pumpkin/Desktop/Personal Brain/`
 - `.claude/commands/<name>.md`
 - lenses ที่ command นั้น reference
 
-สร้าง internal map ก่อนไป Step 3 (ไม่ต้อง output ให้ Gap เห็น เว้นแต่ Gap ถาม)
+สร้าง internal map ก่อนไป Step 3 (ไม่ต้อง output ให้ user เห็น เว้นแต่ user ถาม)
 
 ---
 
@@ -91,7 +88,7 @@ Output ตาม format:
 
 ## Step 5 — Inbox Pipeline (ถ้ามี)
 
-ถ้า Gap บอกว่ามี skill idea ใน inbox (`.claude/skills/inbox/` หรือ `Resources/skills/inbox/`):
+ถ้า user บอกว่ามี skill idea ใน inbox (`.claude/skills/inbox/` หรือ `Resources/skills/inbox/`):
 1. อ่านไฟล์ทั้งหมดใน inbox
 2. ประเมินแต่ละ idea ด้วย recommend lens
 3. ถ้า viable → ระบุตำแหน่งที่ถูกต้อง:
@@ -105,16 +102,16 @@ Output ตาม format:
 | เป็น slash command ใหม่ | `.claude/commands/<name>.md` |
 | เป็น worker agent ใหม่ | `.claude/agents/<name>.md` |
 
-4. **confirm กับ Gap** ก่อนสร้างไฟล์จริง
+4. **confirm กับ user** ก่อนสร้างไฟล์จริง
 5. สร้าง/อัปเดต file
 6. ลบไฟล์ออกจาก inbox
 7. อัปเดต `.claude/skills/index.md`
 
 ---
 
-## Step 6 — รอ Gap ตัดสินใจ
+## Step 6 — รอ user ตัดสินใจ
 
-หลัง output recommendations → รอ Gap confirm ก่อน execute ทุกครั้ง
+หลัง output recommendations → รอ user confirm ก่อน execute ทุกครั้ง
 
 ---
 

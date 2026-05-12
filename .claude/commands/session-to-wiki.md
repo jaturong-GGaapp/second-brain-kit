@@ -6,39 +6,55 @@ description: Session Capture to Vault — แปลง conversation → wiki pag
 
 แปลง conversation ปัจจุบัน → wiki pages ครบชุดแบบ lightweight: source + entity/concept stubs
 
-Vault root: `/Users/pumpkin/Desktop/Personal Brain/`
-
 **ต่างจาก deep-wiki-ingest:** skill นี้ทำเร็ว เหมาะกับ session สั้นหรือเนื้อหาไม่ซับซ้อน — สร้าง concept/entity pages แบบ stub (50–100 คำ) แทนที่จะเป็น full pages — ถ้าต้องการละเอียดกว่านี้ ใช้ `/deep-wiki-ingest` แทน
 
-Trigger: เมื่อ Gap พูดว่า "เก็บ session นี้", "save to wiki", "ingest", "บันทึก session",
+Trigger: เมื่อ user พูดว่า "เก็บ session นี้", "save to wiki", "ingest", "บันทึก session",
 "เอา session นี้ใส่ vault", "สรุป session" หรือบริบทชัดว่าอยากเก็บ conversation
 
 ---
 
-## Step 0 — Load Context (ทำก่อนเริ่ม ไม่ต้องบอก Gap)
+## Step 0 — Load Context + Pending Check (ทำก่อนเริ่ม ไม่ต้องบอก user)
 
 อ่าน:
 1. `wiki/index.md` — รู้ว่า pages ไหนมีอยู่แล้ว (ไม่สร้างซ้ำ)
-2. `.claude/skills/shared/obsidian-markdown/SKILL.md` — Obsidian syntax reference
+2. `raw/index.md` — ingest registry ของ raw files
+3. `.claude/skills/shared/obsidian-markdown/SKILL.md` — Obsidian syntax reference
+
+**Pending check:**
+- list files ใน `raw/` filesystem (ยกเว้น `assets/`, `index.md`)
+- candidate slug = filename - extension
+- ถ้า `[[candidate slug]]` ไม่อยู่ใน `raw/index.md` → pending
+- ถ้ามี pending list ไม่ว่าง:
+  - แจ้ง user: "⏳ Found N pending raw files (in raw/ but not in raw/index.md): [list]"
+  - ถาม: "Would you like to ingest these now or skip?"
+- ถ้าว่าง → ดำเนินการต่อ
 
 ---
 
-## Step 0.5 — Save Raw Content
+## Step 0.5 — Save Raw Content + Register
 
-ก่อนประมวลผลใดๆ — บันทึก original content ลง `raw/YYYY-MM-DD-slug.md` เสมอ (slug เดียวกับที่จะใช้ใน wiki/sources/)
+ก่อนประมวลผลใดๆ:
 
-```markdown
----
-title: "[Title]"
-type: raw
-date: YYYY-MM-DD
-slug: YYYY-MM-DD-slug
----
+1. **เขียน raw file** — `raw/YYYY-MM-DD-slug.md` (content immutable, slug เดียวกับ wiki/sources/):
+   ```markdown
+   ---
+   title: "[Title]"
+   type: raw
+   date: YYYY-MM-DD
+   ---
 
-[original content as-is — ไม่แปลง ไม่ตัด ไม่เพิ่ม]
-```
+   [original content as-is — ไม่แปลง ไม่ตัด ไม่เพิ่ม]
+   ```
 
-raw file คือต้นฉบับที่อ่านได้โดยตรง — wiki/sources/ คือ processed version ที่มี links และ structure
+2. **Register ใน raw/index.md** — เพิ่ม row ใต้ heading `## YYYY-MM`:
+   ```markdown
+   | [[YYYY-MM-DD-slug]] | Title | YYYY-MM-DD | Format | YYYY-MM-DD |
+   ```
+   - สร้าง heading + table header ใหม่ถ้าเดือนนั้นยังไม่มี
+   - อัปเดต counter ใน header file: `_N raw files registered_`
+
+raw file content คือต้นฉบับ immutable — wiki/sources/ คือ processed version
+**ห้ามแก้ไข raw file หลังจากสร้าง** — update เฉพาะ raw/index.md เท่านั้น
 
 ---
 
@@ -183,7 +199,7 @@ sources: [source-slug]
 
 [คำอธิบาย 1 ประโยค — ประเภท, บทบาท]
 
-## Relevance to Gap's Work
+## Relevance to user's Work
 [เชื่อมกับอะไร]
 
 ## Mentioned In
@@ -256,4 +272,4 @@ Append ท้าย `wiki/log.md`:
 - raw/ files ที่สร้างใหม่ → write-once ไม่แก้หลังจากสร้าง
 - ถ้า slug ซ้ำกับที่มีอยู่แล้วใน index → เพิ่ม suffix `-2`
 - Concept/entity page ที่มีอยู่แล้ว → อัปเดต `## Mentioned In` แทนสร้างใหม่
-- ไม่ต้องรอ confirm จาก Gap — ทำเลยทันที
+- ไม่ต้องรอ confirm จาก user — ทำเลยทันที

@@ -1,6 +1,9 @@
 # Skill Library Index
 
-_Last updated: 2026-05-05_
+_Last updated: 2026-05-06_
+
+> **Format standard (ตั้งแต่ 2026-05-06):** skills ทุกตัวใช้ directory + `SKILL.md` ตาม Agent Skills spec
+> Flat files (`.md` เดี่ยว) คือ legacy — ถ้าพบให้ migrate
 
 ---
 
@@ -13,6 +16,7 @@ _Last updated: 2026-05-05_
 | [wiki-agent.md](../agents/wiki-agent.md) | INGEST / QUERY / LINT บน wiki/ layer | — |
 | [skill-optimizer.md](../agents/skill-optimizer.md) | Systems architect สำหรับ .claude/ — survey, diagnose, recommend | `skills/skill-optimizer/` (3 lenses) |
 | [business-plan-analyst.md](../agents/business-plan-analyst.md) | วิเคราะห์แผนธุรกิจผ่าน multi-lens framework (Market, Model, Moat, Money, Milestones) | — |
+| [financial-advisor.md](../agents/financial-advisor.md) | ที่ปรึกษาการเงินส่วนตัวครบวงจร (Wealth Planner + Fund Manager + Career Coach + Risk Manager + Personal CFO) | `skills/financial-advisor/` (3 lenses) |
 
 ---
 
@@ -36,23 +40,31 @@ _Last updated: 2026-05-05_
 ### journal-agent/
 | Lens | Character | Used by |
 |------|-----------|---------|
-| [daily-capture.md](journal-agent/daily-capture.md) | Neutral witness — รับข้อมูลโดยไม่นำ ไม่ judge | journal-agent, /journal |
-| [reflect.md](journal-agent/reflect.md) | Compassionate pattern-finder — หา pattern ไม่ใช่ตัวผู้กระทำ | journal-agent, /weekly-review |
-| [export-to-obsidian.md](journal-agent/export-to-obsidian.md) | Careful archivist — เขียนให้อ่านได้ใน 6 เดือน | journal-agent |
+| [daily-capture/SKILL.md](journal-agent/daily-capture/SKILL.md) | Neutral witness — รับข้อมูลโดยไม่นำ ไม่ judge | journal-agent, /journal |
+| [reflect/SKILL.md](journal-agent/reflect/SKILL.md) | Compassionate pattern-finder — หา pattern ไม่ใช่ตัวผู้กระทำ | journal-agent, /weekly-review |
+| [export-to-obsidian/SKILL.md](journal-agent/export-to-obsidian/SKILL.md) | Careful archivist — เขียนให้อ่านได้ใน 6 เดือน | journal-agent |
 
 ### secretary/
 | Lens | Character | Used by |
 |------|-----------|---------|
-| [intent-analysis.md](secretary/intent-analysis.md) | Translator — เข้าใจ intent จริงก่อนตอบ | secretary |
-| [worker-routing.md](secretary/worker-routing.md) | Dispatcher — route by capability ไม่ใช่ keyword | secretary |
-| [delivery.md](secretary/delivery.md) | Editor — output เฉพาะที่ user ต้องการลงมือ | secretary |
+| [intent-analysis/SKILL.md](secretary/intent-analysis/SKILL.md) | Translator — เข้าใจ intent จริงก่อนตอบ | secretary |
+| [worker-routing/SKILL.md](secretary/worker-routing/SKILL.md) | Dispatcher — route by capability ไม่ใช่ keyword | secretary |
+| [delivery/SKILL.md](secretary/delivery/SKILL.md) | Editor — output เฉพาะที่ user ต้องการลงมือ | secretary |
+| [app-context/SKILL.md](secretary/app-context/SKILL.md) | Interviewer — เก็บ project context ก่อน init-wiki | secretary (on demand) |
+
+### financial-advisor/
+| Lens | Character | Used by |
+|------|-----------|---------|
+| [data-collection/SKILL.md](financial-advisor/data-collection/SKILL.md) | Empathetic Detective — ถาม 11 หมวดอย่างถูกจังหวะ | financial-advisor |
+| [diagnosis/SKILL.md](financial-advisor/diagnosis/SKILL.md) | Honest Diagnostician — วิเคราะห์และ flag ความเสี่ยง | financial-advisor |
+| [action-planner/SKILL.md](financial-advisor/action-planner/SKILL.md) | Pragmatic Engineer — แปลงวิเคราะห์ → steps ที่ทำได้จริง | financial-advisor |
 
 ### skill-optimizer/
 | Lens | Character | Used by |
 |------|-----------|---------|
-| [survey.md](skill-optimizer/survey.md) | Cartographer — map ก่อน judge | skill-optimizer |
-| [diagnose.md](skill-optimizer/diagnose.md) | Structural engineer — หา load-bearing problems | skill-optimizer |
-| [recommend.md](skill-optimizer/recommend.md) | Pragmatic builder — minimum effective change | skill-optimizer |
+| [survey/SKILL.md](skill-optimizer/survey/SKILL.md) | Cartographer — map ก่อน judge | skill-optimizer |
+| [diagnose/SKILL.md](skill-optimizer/diagnose/SKILL.md) | Structural engineer — หา load-bearing problems | skill-optimizer |
+| [recommend/SKILL.md](skill-optimizer/recommend/SKILL.md) | Pragmatic builder — minimum effective change | skill-optimizer |
 
 ---
 
@@ -60,9 +72,11 @@ _Last updated: 2026-05-05_
 
 | Skill | Used by |
 |-------|---------|
-| [shared/obsidian-markdown/](shared/obsidian-markdown/SKILL.md) | journal-agent, /session-to-wiki, /deep-wiki-ingest, /weekly-review |
-| [shared/para-router.md](shared/para-router.md) | secretary (classify Project/Area/Todo/Resource + scaffold flow) |
-| [shared/roi-analyzer.md](shared/roi-analyzer.md) | general purpose — ROI calculations |
-| [shared/grill-with-docs/](shared/grill-with-docs/SKILL.md) | document analysis |
-| [shared/webapp-testing/](shared/webapp-testing/SKILL.md) | webapp QA |
-| [shared/creating-financial-models/](shared/creating-financial-models/SKILL.md) | finance calculations |
+| [shared/obsidian-markdown/SKILL.md](shared/obsidian-markdown/SKILL.md) | journal-agent, /session-to-wiki, /deep-wiki-ingest, /weekly-review |
+| [shared/para-router/SKILL.md](shared/para-router/SKILL.md) | secretary (classify Project/Area/Todo/Resource + scaffold flow) |
+| [shared/roi-analyzer/SKILL.md](shared/roi-analyzer/SKILL.md) | secretary — ROI calculations |
+| [shared/grill-with-docs/SKILL.md](shared/grill-with-docs/SKILL.md) | stress-test code/architecture decisions (CONTEXT.md, ADRs) |
+| [shared/grill-plan/SKILL.md](shared/grill-plan/SKILL.md) | stress-test แผนชีวิต/การเงิน/ธุรกิจ ด้วย Socratic questioning |
+| [shared/find-skills/SKILL.md](shared/find-skills/SKILL.md) | ค้นหา skill จาก skills.sh ecosystem |
+| [shared/webapp-testing/SKILL.md](shared/webapp-testing/SKILL.md) | webapp QA |
+| [shared/creating-financial-models/SKILL.md](shared/creating-financial-models/SKILL.md) | finance calculations |

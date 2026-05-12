@@ -1,19 +1,15 @@
 ---
 name: business-plan-analyst
-description: Business Plan Analyst — วิเคราะห์แผนธุรกิจผ่าน multi-lens framework (Market, Model, Moat, Money, Milestones) พร้อม score และ critical questions สำหรับแผนธุรกิจที่ Gap กำลังพัฒนา
+description: Business Plan Analyst — วิเคราะห์แผนธุรกิจผ่าน multi-lens framework (Market, Model, Moat, Money, Milestones) พร้อม score และ critical questions
 ---
 
 # Business Plan Analyst
-
-Vault root: `/Users/pumpkin/Desktop/Personal Brain/`
-
----
 
 ## Step 0 — Input Intake
 
 รับ input 3 แบบ:
 
-1. **File path** — เช่น `Projects/App Startup/BusinessPlan.md` → Read file ก่อนวิเคราะห์
+1. **File path** — เช่น `Projects/MyProject/BusinessPlan.md` → Read file ก่อนวิเคราะห์
 2. **Paste text** — user วาง content โดยตรงใน chat
 3. **"วิเคราะห์แผนที่เปิดอยู่"** — อ่านจาก IDE context (ide_opened_file)
 

@@ -2,7 +2,7 @@
 
 ## Core Idea
 
-Most knowledge systems work like RAG: retrieve raw documents at query time, rediscover knowledge from scratch on every question. Nothing accumulates. This wiki works differently.
+Most knowledge systems retrieve raw documents at query time and rediscover knowledge from scratch on every question. Nothing accumulates. This wiki works differently.
 
 When a new source arrives, you don't just index it — you read it, extract what matters, and integrate it into the existing wiki: updating entity pages, revising concept summaries, flagging contradictions, strengthening the evolving synthesis. Knowledge is compiled once and kept current, not re-derived on every query. The wiki is a persistent, compounding artifact. The cross-references are already there. The contradictions have already been flagged. Every new source and every good answer makes the whole richer.
 
@@ -53,7 +53,7 @@ vault/
 │   ├── sources/               ← One summary page per ingested source.
 │   └── analyses/              ← Query outputs: comparisons, deep-dives, insights.
 │
-├── raw/                       ← Source documents. IMMUTABLE. User-curated only.
+├── raw/                       ← Source documents. Immutable. raw/index.md = ingest registry.
 │   └── assets/                ← Downloaded images and attachments.
 │
 └── Archive/                   ← Completed projects and outdated notes.
@@ -85,12 +85,15 @@ When filing or advising on where something belongs:
 
 At the start of every new session — follow this order exactly:
 1. Read `CLAUDE.md` (this file)
-2. **Try to read `Secretary.md`**
+2. **Check if `.initialized` exists in the vault root**
+   - **Not found** → stop and notify user: "Vault not initialized — run `python setup.py` first. It creates the folder structure, wiki foundation files, and personal config templates (Secretary.md, Me.md) that this agent depends on."
+   - **Found** → continue
+3. **Try to read `Secretary.md`**
    - **Found** → read it; it will point to `.claude/agents/secretary.md` for full instructions
    - **Not found** → proceed as generic wiki agent (no personal context) + notify user: "Secretary.md not found — running in wiki-only mode."
-3. Read `wiki/index.md`
-4. Read last 30 lines of `wiki/log.md`
-5. Greet the user
+4. Read `wiki/index.md`
+5. Read last 30 lines of `wiki/log.md`
+6. Greet the user
 
 > [!note] Wiki operations
 > INGEST / QUERY / LINT workflows and all templates live in `.claude/agents/wiki-agent.md`
@@ -213,7 +216,7 @@ Append-only. Format: `## [YYYY-MM-DD] operation | title`
 
 ## Hard Rules
 
-1. **Never modify `raw/`** — immutable source of truth
+1. **Never modify raw/ files** — content and frontmatter are immutable source of truth. Only `raw/index.md` is updated when registering new raw entries.
 2. **Always update `wiki/index.md` and `wiki/log.md`** on every operation
 3. **Link generously** — wikilinks are what make this a wiki
 4. **Discuss before ingesting** — ask briefly if there's any framing or emphasis to note first
@@ -221,3 +224,5 @@ Append-only. Format: `## [YYYY-MM-DD] operation | title`
 6. **Use callouts** for warnings, tips, contradictions
 7. **Session start: CLAUDE.md → Secretary.md → wiki/index.md → last 30 lines wiki/log.md**
 8. **Language and tone follow Secretary.md** — if no Secretary.md, default to English, concise
+9. **Pending raw check** — at Step 0, scan `raw/` filesystem (excluding `assets/`, `index.md`). Files whose slug (filename minus extension) is not in `raw/index.md` are pending; report to user before proceeding.
+10. **Paths are relative to vault root** — agent runs at vault root; never hardcode absolute paths in commands/skills/agents. ใช้ `wiki/`, `raw/`, `.claude/` etc. ไม่ใช่ `/Users/.../wiki/` — vault ย้ายโฟลเดอร์ได้โดยไม่ต้องแก้ config

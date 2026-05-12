@@ -35,6 +35,12 @@ def write_file(path, content):
 
 
 def main():
+    sentinel = os.path.join(VAULT, ".initialized")
+    if os.path.exists(sentinel):
+        print("\n✓ Vault already initialized — nothing to do.")
+        print("  (Delete .initialized to force re-run)\n")
+        return
+
     print("\n=== Second Brain Kit — Setup ===\n")
 
     # ── 1. Personal config files ──────────────────────────────────────────
@@ -46,6 +52,10 @@ def main():
     copy_template(
         os.path.join(VAULT, "Me.template.md"),
         os.path.join(VAULT, "Me.md"),
+    )
+    copy_template(
+        os.path.join(VAULT, ".claude/agents/secretary.template.md"),
+        os.path.join(VAULT, ".claude/agents/secretary.md"),
     )
 
     # ── 2. Folder structure ───────────────────────────────────────────────
@@ -180,6 +190,23 @@ note: updated by Journal Agent after weekly review — do not edit manually
     )
 
     # ── Done ──────────────────────────────────────────────────────────────
+    with open(sentinel, "w") as f:
+        f.write(f"""\
+initialized: {TODAY}
+
+# .initialized — Vault setup sentinel
+#
+# This file is created by setup.py after the vault folder structure,
+# wiki foundation files, and personal config templates have been set up.
+#
+# Role: CLAUDE.md checks for this file at session start. If missing,
+# the agent will stop and ask the user to run `python setup.py` first.
+#
+# Do not delete this file unless you want to re-run setup from scratch.
+# (setup.py skips existing files, so re-running is safe.)
+""")
+    print(f"  ✓ .initialized")
+
     print("""
 === Setup complete ✓ ===
 
